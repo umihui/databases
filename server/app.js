@@ -20,9 +20,15 @@ app.use(parser.json());
 
 // Set up our routes
 app.use('/classes', router);
+app.disable('etag');
+
+db.connection.connect();
 
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
+
+
+// console.log('here');
 
 // If we are being run directly, run the server.
 if (!module.parent) {
